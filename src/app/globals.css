@@ -6,15 +6,15 @@ body {
 
 @layer components {
   .btn-primary {
-    @apply bg-blue-800 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 focus:ring-4 focus:ring-blue-200;
+    @apply bg-blue-800 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 focus:ring-4 focus:ring-blue-200 cursor-pointer;
   }
   
   .btn-secondary {
-    @apply bg-sky-500 hover:bg-sky-600 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 focus:ring-4 focus:ring-sky-200;
+    @apply bg-sky-500 hover:bg-sky-600 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 focus:ring-4 focus:ring-sky-200 cursor-pointer;
   }
   
   .btn-accent {
-    @apply bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 focus:ring-4 focus:ring-amber-200;
+    @apply bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 focus:ring-4 focus:ring-amber-200 cursor-pointer;
   }
   
   .card {
@@ -27,5 +27,40 @@ body {
   
   .shadow-card {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  /* Ensure button visibility and proper styling */
+  button {
+    @apply cursor-pointer;
+  }
+  
+  button:focus {
+    @apply outline-none;
+  }
+  
+  /* Fix filter button issues */
+  .filter-button {
+    @apply px-6 py-3 rounded-full font-medium transition-all duration-200 cursor-pointer border;
+  }
+  
+  .filter-button.active {
+    @apply bg-blue-600 text-white border-blue-600;
+  }
+  
+  .filter-button.inactive {
+    @apply bg-white text-gray-700 hover:bg-gray-50 border-gray-300;
+  }
+
+  /* Ensure add to cart button is always visible */
+  .add-to-cart-btn {
+    background-color: #F59E0B !important;
+    color: white !important;
+    border: none !important;
+    @apply px-6 py-2 rounded-lg font-medium transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md;
+  }
+  
+  .add-to-cart-btn:hover {
+    background-color: #D97706 !important;
+    transform: translateY(-1px);
   }
 }

@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { LogoIcon, MenuIcon, CloseIcon } from '@/components/ui/icons';
+import CartButton from '@/components/cart/CartButton';
+import CartSidebar from '@/components/cart/CartSidebar';
 
 interface NavLinkProps {
   href: string;
@@ -71,7 +73,7 @@ export default function Header() {
                 {item.label}
               </NavLink>
             ))}
-            <button className="btn-accent">Order Now</button>
+            <CartButton />
           </div>
 
           {/* Mobile Menu Button */}
@@ -100,11 +102,14 @@ export default function Header() {
                   {item.label}
                 </NavLink>
               ))}
-              <button className="btn-accent w-full text-center">Order Now</button>
+              <div className="w-full">
+                <CartButton />
+              </div>
             </div>
           </div>
         )}
       </nav>
+      <CartSidebar />
     </header>
   );
 }
