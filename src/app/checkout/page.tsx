@@ -139,7 +139,7 @@ export default function CheckoutPage() {
           <div>
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Customer Information */}
-              <div className="bg-white p-6 rounded-lg shadow-card">
+              <div className="bg-white p-6 rounded-lg shadow-lg">
                 <h2 className="text-xl font-semibold text-gray-800 mb-4">Customer Information</h2>
                 
                 <div className="space-y-4">
@@ -211,7 +211,7 @@ export default function CheckoutPage() {
               </div>
 
               {/* Pickup Time */}
-              <div className="bg-white p-6 rounded-lg shadow-card">
+              <div className="bg-white p-6 rounded-lg shadow-lg">
                 <h2 className="text-xl font-semibold text-gray-800 mb-4">Pickup Time</h2>
                 
                 <div>
@@ -246,7 +246,7 @@ export default function CheckoutPage() {
               </div>
 
               {/* Payment Method */}
-              <div className="bg-white p-6 rounded-lg shadow-card">
+              <div className="bg-white p-6 rounded-lg shadow-lg">
                 <h2 className="text-xl font-semibold text-gray-800 mb-4">Payment Method</h2>
                 
                 <div className="space-y-3">
@@ -294,7 +294,7 @@ export default function CheckoutPage() {
 
           {/* Order Summary */}
           <div>
-            <div className="bg-white p-6 rounded-lg shadow-card sticky top-24">
+            <div className="bg-white p-6 rounded-lg shadow-lg sticky top-24">
               <h2 className="text-xl font-semibold text-gray-800 mb-4">Order Summary</h2>
               
               <div className="space-y-4 mb-6">

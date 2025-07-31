@@ -15,9 +15,9 @@ interface NavLinkProps {
 }
 
 function NavLink({ href, children, isActive, onClick }: NavLinkProps) {
-  const baseClasses = "transition-colors duration-200";
-  const activeClasses = "text-blue-800 font-semibold border-b-2 border-blue-800 pb-1";
-  const inactiveClasses = "text-gray-500 hover:text-blue-800";
+  const baseClasses = "transition-all duration-300 font-light tracking-wide cursor-pointer";
+  const activeClasses = "text-blue-800 font-medium border-b-2 border-blue-800 pb-1";
+  const inactiveClasses = "text-gray-600 hover:text-blue-800 hover:font-medium";
   
   return (
     <Link 
@@ -50,15 +50,15 @@ export default function Header() {
   ];
 
   return (
-    <header className="bg-white shadow-subtle sticky top-0 z-50">
+    <header className="bg-white/95 backdrop-blur-sm shadow-sm border-b border-blue-100 sticky top-0 z-40">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <LogoIcon className="h-10 w-10 text-blue-800" />
+          <Link href="/" className="flex items-center group">
+            <LogoIcon className="h-10 w-10 text-blue-800 group-hover:text-sky-600 transition-colors duration-300" />
             <div className="ml-3">
-              <h1 className="text-xl font-bold text-blue-800">Mount Pleasant</h1>
-              <p className="text-sm text-gray-500 font-accent">Fish & Chips</p>
+              <h1 className="text-xl font-medium text-blue-800 tracking-tight">Mount Pleasant</h1>
+              <p className="text-sm text-gray-500 font-light font-accent">Fish & Chips</p>
             </div>
           </Link>
 
@@ -80,7 +80,7 @@ export default function Header() {
           <div className="md:hidden">
             <button
               onClick={toggleMobileMenu}
-              className="text-gray-500 hover:text-blue-800 transition-colors duration-200"
+              className="text-gray-600 hover:text-blue-800 transition-colors duration-300 cursor-pointer"
               aria-label="Toggle mobile menu"
             >
               {isMobileMenuOpen ? <CloseIcon /> : <MenuIcon />}
@@ -90,7 +90,7 @@ export default function Header() {
 
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden border-t border-gray-100 py-4">
+          <div className="md:hidden border-t border-blue-100 py-4 bg-blue-50/30">
             <div className="flex flex-col space-y-4">
               {navItems.map((item) => (
                 <NavLink
@@ -102,7 +102,7 @@ export default function Header() {
                   {item.label}
                 </NavLink>
               ))}
-              <div className="w-full">
+              <div className="w-full pt-2">
                 <CartButton />
               </div>
             </div>

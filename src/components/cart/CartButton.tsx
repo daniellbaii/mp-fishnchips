@@ -3,12 +3,12 @@
 import { useCart } from '@/contexts/CartContext';
 
 export default function CartButton() {
-  const { totalItems, totalAmount, toggleCart } = useCart();
+  const { totalItems, totalAmount, openCart } = useCart();
 
   return (
     <button
-      onClick={toggleCart}
-      className="relative bg-accent-500 hover:bg-accent-600 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 flex items-center gap-2 w-full justify-center md:w-auto md:justify-start"
+      onClick={openCart}
+      className="relative bg-blue-800 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors duration-200 flex items-center gap-2 w-full justify-center md:w-auto md:justify-start cursor-pointer"
     >
       <span>🛒</span>
       <span className="hidden sm:inline">Cart</span>

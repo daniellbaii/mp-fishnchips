@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { Button } from '@/components/ui';
 
 export default function HeroSection() {
   return (
@@ -20,18 +21,22 @@ export default function HeroSection() {
             
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Link href="/menu" className="btn-accent text-lg px-8 py-4 inline-flex items-center justify-center">
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"/>
-                </svg>
-                Order Fresh Now
+              <Link href="/menu">
+                <Button variant="accent" size="lg" className="inline-flex items-center justify-center">
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"/>
+                  </svg>
+                  Order Fresh Now
+                </Button>
               </Link>
-              <Link href="/specials" className="btn-secondary text-lg px-8 py-4 inline-flex items-center justify-center">
-                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-                </svg>
-                View Today&apos;s Catch
+              <Link href="/specials">
+                <Button variant="secondary" size="lg" className="inline-flex items-center justify-center">
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                  </svg>
+                  View Today&apos;s Catch
+                </Button>
               </Link>
             </div>
 
@@ -50,7 +55,7 @@ export default function HeroSection() {
 
           {/* Hero Image */}
           <div className="relative">
-            <div className="aspect-w-4 aspect-h-3 rounded-2xl overflow-hidden shadow-card">
+            <div className="aspect-w-4 aspect-h-3 rounded-2xl overflow-hidden shadow-lg">
               <Image 
                 src="/images/fish-and-chips-hero.svg" 
                 alt="Golden fish and chips with Perth coastal backdrop" 
@@ -62,7 +67,7 @@ export default function HeroSection() {
             </div>
             
             {/* Floating Daily Catch Cards */}
-            <div className="absolute -bottom-6 -left-6 bg-white rounded-lg shadow-card p-4 hidden lg:block">
+            <div className="absolute -bottom-6 -left-6 bg-white rounded-lg shadow-lg p-4 hidden lg:block">
               <div className="text-sm font-semibold text-gray-800">Today&apos;s Fresh Catch</div>
               <div className="text-xs text-gray-500 mt-1">Barramundi • Snapper • King George Whiting</div>
             </div>

@@ -5,62 +5,50 @@ body {
 }
 
 @layer components {
+  /* Button Components */
+  .btn {
+    @apply font-semibold px-6 py-3 rounded-lg transition-all duration-300 cursor-pointer focus:outline-none focus:ring-4;
+  }
+  
   .btn-primary {
-    @apply bg-blue-800 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 focus:ring-4 focus:ring-blue-200 cursor-pointer;
+    @apply font-semibold px-6 py-3 rounded-lg transition-all duration-300 cursor-pointer focus:outline-none focus:ring-4 bg-blue-800 hover:bg-blue-700 text-white focus:ring-blue-200;
   }
   
   .btn-secondary {
-    @apply bg-sky-500 hover:bg-sky-600 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 focus:ring-4 focus:ring-sky-200 cursor-pointer;
+    @apply font-semibold px-6 py-3 rounded-lg transition-all duration-300 cursor-pointer focus:outline-none focus:ring-4 bg-sky-500 hover:bg-sky-600 text-white focus:ring-sky-200;
   }
   
   .btn-accent {
-    @apply bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 focus:ring-4 focus:ring-amber-200 cursor-pointer;
-  }
-  
-  .card {
-    @apply bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300;
-  }
-  
-  .shadow-subtle {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  }
-  
-  .shadow-card {
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    @apply font-semibold px-6 py-3 rounded-lg transition-all duration-300 cursor-pointer focus:outline-none focus:ring-4 bg-amber-500 hover:bg-amber-600 text-white focus:ring-amber-200;
   }
 
-  /* Ensure button visibility and proper styling */
-  button {
-    @apply cursor-pointer;
+  .btn-ghost {
+    @apply font-semibold px-6 py-3 rounded-lg transition-all duration-300 cursor-pointer focus:outline-none focus:ring-4 bg-transparent hover:bg-gray-50 text-gray-700 border border-gray-300 focus:ring-gray-200;
   }
   
-  button:focus {
-    @apply outline-none;
-  }
-  
-  /* Fix filter button issues */
-  .filter-button {
-    @apply px-6 py-3 rounded-full font-medium transition-all duration-200 cursor-pointer border;
-  }
-  
-  .filter-button.active {
-    @apply bg-blue-600 text-white border-blue-600;
-  }
-  
-  .filter-button.inactive {
-    @apply bg-white text-gray-700 hover:bg-gray-50 border-gray-300;
+  /* Legacy card styles - being replaced by Card component */
+
+  /* Legacy filter styles - replaced with inline classes */
+
+  /* Form Components */
+  .input {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg transition-colors duration-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent;
   }
 
-  /* Ensure add to cart button is always visible */
-  .add-to-cart-btn {
-    background-color: #F59E0B !important;
-    color: white !important;
-    border: none !important;
-    @apply px-6 py-2 rounded-lg font-medium transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md;
+  /* Quantity Selector */
+  .quantity-btn {
+    @apply w-8 h-8 bg-white hover:bg-gray-100 border border-gray-300 rounded-full flex items-center justify-center font-semibold text-gray-600 transition-colors duration-200 cursor-pointer;
+  }
+
+  /* Legacy badge styles - replaced by Badge component */
+
+  /* Utility Classes */
+  
+  .transition-smooth {
+    @apply transition-all duration-300;
   }
   
-  .add-to-cart-btn:hover {
-    background-color: #D97706 !important;
-    transform: translateY(-1px);
+  .transition-quick {
+    @apply transition-all duration-200;
   }
 }

@@ -76,7 +76,7 @@ function OrderConfirmationContent() {
         </div>
 
         {/* Order Details */}
-        <div className="bg-white rounded-lg shadow-card p-6 mb-6">
+        <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-xl font-semibold text-gray-800">Order Details</h2>
             <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">
@@ -115,7 +115,7 @@ function OrderConfirmationContent() {
         </div>
 
         {/* Order Items */}
-        <div className="bg-white rounded-lg shadow-card p-6 mb-6">
+        <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
           <h3 className="text-lg font-semibold text-gray-800 mb-4">Your Order</h3>
           
           <div className="space-y-4">
@@ -155,7 +155,7 @@ function OrderConfirmationContent() {
         </div>
 
         {/* Customer Information */}
-        <div className="bg-white rounded-lg shadow-card p-6 mb-6">
+        <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
           <h3 className="text-lg font-semibold text-gray-800 mb-4">Contact Information</h3>
           
           <div className="space-y-2 text-sm">

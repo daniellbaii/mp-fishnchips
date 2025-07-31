@@ -3,19 +3,19 @@ import { LogoIcon } from '@/components/ui/icons';
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-800 text-white py-16">
+    <footer className="bg-gradient-to-br from-blue-900 via-blue-800 to-sky-800 text-white py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center mb-4">
-              <LogoIcon className="h-10 w-10 text-amber-500" />
+              <LogoIcon className="h-10 w-10 text-amber-400" />
               <div className="ml-3">
-                <h3 className="text-xl font-bold">Mount Pleasant Fish & Chips</h3>
-                <p className="text-sm text-gray-400 font-accent">Perth&apos;s Seafood Tradition Since 1960</p>
+                <h3 className="text-xl font-medium tracking-tight">Mount Pleasant Fish & Chips</h3>
+                <p className="text-sm text-blue-200 font-light font-accent">Perth&apos;s Seafood Tradition Since 1960</p>
               </div>
             </div>
-            <p className="text-gray-400 mb-6 max-w-md">
+            <p className="text-blue-100 font-light mb-6 max-w-md leading-relaxed">
               Three generations of serving Perth&apos;s freshest fish and chips. From our family to yours, 
               we&apos;re committed to quality, freshness, and the authentic taste of the ocean.
             </p>
@@ -23,19 +23,19 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              <li><Link href="/" className="text-gray-400 hover:text-amber-500 transition-colors duration-200">Home</Link></li>
-              <li><Link href="/menu" className="text-gray-400 hover:text-amber-500 transition-colors duration-200">Menu & Order</Link></li>
-              <li><Link href="/specials" className="text-gray-400 hover:text-amber-500 transition-colors duration-200">Daily Specials</Link></li>
-              <li><Link href="/contact" className="text-gray-400 hover:text-amber-500 transition-colors duration-200">Contact & Location</Link></li>
+            <h4 className="text-lg font-medium mb-4 text-white">Quick Links</h4>
+            <ul className="space-y-3">
+              <li><Link href="/" className="text-blue-200 hover:text-amber-400 transition-colors duration-300 font-light cursor-pointer">Home</Link></li>
+              <li><Link href="/menu" className="text-blue-200 hover:text-amber-400 transition-colors duration-300 font-light cursor-pointer">Menu & Order</Link></li>
+              <li><Link href="/specials" className="text-blue-200 hover:text-amber-400 transition-colors duration-300 font-light cursor-pointer">Daily Specials</Link></li>
+              <li><Link href="/contact" className="text-blue-200 hover:text-amber-400 transition-colors duration-300 font-light cursor-pointer">Contact & Location</Link></li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
-            <ul className="space-y-2 text-gray-400">
+            <h4 className="text-lg font-medium mb-4 text-white">Contact Info</h4>
+            <ul className="space-y-3 text-blue-200 font-light">
               <li className="flex items-center">
                 <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
@@ -65,8 +65,8 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
-          <p>&copy; 2025 Mount Pleasant Fish & Chips. All Rights Reserved. | Perth&apos;s Seafood Tradition Since 1960</p>
+        <div className="border-t border-blue-700/50 mt-12 pt-8 text-center text-blue-200">
+          <p className="font-light">&copy; 2025 Mount Pleasant Fish & Chips. All Rights Reserved. | Perth&apos;s Seafood Tradition Since 1960</p>
         </div>
       </div>
     </footer>

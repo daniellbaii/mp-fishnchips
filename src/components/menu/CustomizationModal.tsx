@@ -1,8 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { MenuItem, SelectedCustomization, MenuCustomization } from '@/types/menu';
 import { CloseIcon } from '@/components/ui/icons';
+import { Button, QuantitySelector } from '@/components/ui';
 
 interface CustomizationModalProps {
   item: MenuItem;
@@ -34,6 +36,20 @@ export default function CustomizationModal({ item, isOpen, onClose, onAdd }: Cus
       setQuantity(1);
     }
   }, [isOpen, item]);
+
+  // Disable body scroll when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    // Cleanup function to restore scroll when component unmounts
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
 
   const handleCustomizationChange = (customization: MenuCustomization, optionId: string) => {
     const option = customization.options.find(opt => opt.id === optionId);
@@ -100,100 +116,133 @@ export default function CustomizationModal({ item, isOpen, onClose, onAdd }: Cus
 
   if (!isOpen) return null;
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <div className="absolute inset-0 bg-black bg-opacity-50" onClick={onClose} />
+  const modalContent = (
+    <>
+      {/* Backdrop */}
+      <div 
+        className="fixed inset-0 bg-black bg-opacity-30 z-50"
+        onClick={onClose}
+      />
       
-      <div className="relative bg-white rounded-2xl shadow-2xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
-        {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-100">
-          <h2 className="text-2xl font-bold text-gray-800">{item.name}</h2>
-          <button
-            onClick={onClose}
-            className="p-2 hover:bg-gray-100 rounded-full transition-colors duration-200"
-          >
-            <CloseIcon />
-          </button>
+      {/* Modal */}
+      <div className="fixed inset-0 z-60 flex items-center justify-center p-4">
+        <div className="relative bg-white rounded-xl shadow-lg max-w-lg w-full max-h-[90vh] flex flex-col overflow-hidden border border-blue-100">
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 z-10 w-8 h-8 bg-white/90 rounded-lg flex items-center justify-center hover:bg-gray-50 transition-colors duration-200 cursor-pointer"
+        >
+          <CloseIcon className="w-4 h-4 text-gray-500" />
+        </button>
+
+        {/* Header Section */}
+        <div className="px-6 pt-8 pb-6 flex-shrink-0 border-b border-gray-100">
+          <h2 className="text-2xl font-medium text-blue-800 mb-3 tracking-tight">{item.name}</h2>
+          <p className="text-gray-600 text-sm font-light leading-relaxed">{item.description}</p>
         </div>
 
-        {/* Content */}
-        <div className="p-6">
-          <p className="text-gray-600 mb-6">{item.description}</p>
-
+        {/* Content - Scrollable */}
+        <div className="flex-1 overflow-y-auto">
           {/* Customizations */}
           {item.customizations?.map(customization => (
-            <div key={customization.id} className="mb-6">
-              <h3 className="text-lg font-semibold text-gray-800 mb-3">
-                {customization.name}
-                {customization.required && <span className="text-red-500 ml-1">*</span>}
-              </h3>
+            <div key={customization.id} className="border-b border-gray-50 last:border-b-0">
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-lg font-medium text-blue-800">
+                    {customization.name}
+                    {customization.required && <span className="text-amber-500 ml-1">*</span>}
+                  </h3>
+                  <span className="text-xs text-gray-400 font-light uppercase tracking-wide">
+                    {customization.type === 'checkbox' ? 'Multiple' : 'Choose one'}
+                  </span>
+                </div>
 
-              <div className="space-y-2">
-                {customization.options.map(option => (
-                  <label
-                    key={option.id}
-                    className="flex items-center justify-between p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors duration-200"
-                  >
-                    <div className="flex items-center">
-                      <input
-                        type={customization.type === 'checkbox' ? 'checkbox' : 'radio'}
-                        name={customization.id}
-                        checked={isCustomizationSelected(customization.id, option.id)}
-                        onChange={() => handleCustomizationChange(customization, option.id)}
-                        className="mr-3 text-primary-600 focus:ring-primary-500"
-                      />
-                      <span className="text-gray-700">{option.name}</span>
-                    </div>
-                    {option.priceModifier !== 0 && (
-                      <span className="text-sm font-medium text-gray-600">
-                        {option.priceModifier > 0 ? '+' : ''}${option.priceModifier.toFixed(2)}
-                      </span>
-                    )}
-                  </label>
-                ))}
+                <div className="space-y-1">
+                  {customization.options.map(option => (
+                    <label
+                      key={option.id}
+                      className="flex items-center justify-between p-3 rounded-lg hover:bg-blue-50/50 cursor-pointer transition-colors duration-200 group"
+                    >
+                      <div className="flex items-center flex-1">
+                        <span className="text-gray-800 font-light">{option.name}</span>
+                        {option.priceModifier !== 0 && (
+                          <span className="text-sm text-amber-600 ml-2 font-medium">
+                            ({option.priceModifier > 0 ? '+' : ''}${option.priceModifier.toFixed(2)})
+                          </span>
+                        )}
+                      </div>
+                      <div className="flex items-center">
+                        <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors duration-200 ${
+                          isCustomizationSelected(customization.id, option.id)
+                            ? 'bg-blue-800 border-blue-800'
+                            : 'border-gray-300 group-hover:border-blue-400'
+                        }`}>
+                          {isCustomizationSelected(customization.id, option.id) && (
+                            <div className="w-2 h-2 bg-white rounded-full"></div>
+                          )}
+                        </div>
+                        <input
+                          type={customization.type === 'checkbox' ? 'checkbox' : 'radio'}
+                          name={customization.id}
+                          checked={isCustomizationSelected(customization.id, option.id)}
+                          onChange={() => handleCustomizationChange(customization, option.id)}
+                          className="sr-only"
+                        />
+                      </div>
+                    </label>
+                  ))}
+                </div>
               </div>
             </div>
           ))}
+        </div>
 
-          {/* Quantity */}
-          <div className="mb-6">
-            <h3 className="text-lg font-semibold text-gray-800 mb-3">Quantity</h3>
+        {/* Footer - Fixed at bottom */}
+        <div className="p-6 border-t border-gray-100 flex-shrink-0 bg-gray-50/30">
+          {/* Quantity and Total */}
+          <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-3">
-              <button
-                onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                className="w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center font-semibold transition-colors duration-200"
-              >
-                -
-              </button>
-              <span className="text-xl font-semibold min-w-[3rem] text-center">{quantity}</span>
-              <button
-                onClick={() => setQuantity(quantity + 1)}
-                className="w-10 h-10 bg-gray-100 hover:bg-gray-200 rounded-full flex items-center justify-center font-semibold transition-colors duration-200"
-              >
-                +
-              </button>
+              <span className="text-sm text-gray-600 font-light">Quantity</span>
+              <QuantitySelector
+                quantity={quantity}
+                onChange={setQuantity}
+                min={1}
+              />
+            </div>
+            <div className="text-right">
+              <div className="text-sm text-gray-500 font-light mb-1">Total</div>
+              <div className="text-2xl font-medium text-blue-800">
+                ${calculateTotalPrice().toFixed(2)}
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Footer */}
-        <div className="border-t border-gray-100 p-6">
-          <div className="flex items-center justify-between mb-4">
-            <span className="text-lg font-semibold text-gray-800">Total:</span>
-            <span className="text-2xl font-bold text-primary-800">
-              ${calculateTotalPrice().toFixed(2)}
-            </span>
+          {/* Action Buttons */}
+          <div className="flex gap-3">
+            <Button
+              onClick={onClose}
+              variant="ghost"
+              className="flex-1 border-gray-300 text-gray-600 hover:bg-gray-100"
+            >
+              Cancel
+            </Button>
+            <Button
+              onClick={handleAddToCart}
+              disabled={!canAddToCart()}
+              variant="primary"
+              className="flex-2 bg-blue-800 hover:bg-blue-700 disabled:bg-gray-300"
+            >
+              Add to Cart
+            </Button>
           </div>
-
-          <button
-            onClick={handleAddToCart}
-            disabled={!canAddToCart()}
-            className="w-full bg-accent-500 hover:bg-accent-600 disabled:bg-gray-300 disabled:cursor-not-allowed text-white py-3 rounded-lg font-semibold text-lg transition-colors duration-200"
-          >
-            Add {quantity} to Cart
-          </button>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
+
+  // Render using portal to body to bypass layout containers
+  return typeof window !== 'undefined' 
+    ? createPortal(modalContent, document.body)
+    : null;
 }
