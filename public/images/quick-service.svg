@@ -1,0 +1,29 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="300" fill="#F0F9FF"/>
+  
+  <!-- Clock face -->
+  <circle cx="200" cy="150" r="80" fill="white"/>
+  <circle cx="200" cy="150" r="75" fill="none" stroke="#0EA5E9" stroke-width="4"/>
+  
+  <!-- Clock numbers -->
+  <text x="200" y="90" text-anchor="middle" fill="#1E40AF" font-family="Arial, sans-serif" font-size="16" font-weight="bold">12</text>
+  <text x="260" y="160" text-anchor="middle" fill="#1E40AF" font-family="Arial, sans-serif" font-size="16" font-weight="bold">3</text>
+  <text x="200" y="220" text-anchor="middle" fill="#1E40AF" font-family="Arial, sans-serif" font-size="16" font-weight="bold">6</text>
+  <text x="140" y="160" text-anchor="middle" fill="#1E40AF" font-family="Arial, sans-serif" font-size="16" font-weight="bold">9</text>
+  
+  <!-- Clock hands pointing to 15 minutes -->
+  <line x1="200" y1="150" x2="200" y2="110" stroke="#F59E0B" stroke-width="4" stroke-linecap="round"/>
+  <line x1="200" y1="150" x2="240" y2="150" stroke="#F59E0B" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="200" cy="150" r="6" fill="#F59E0B"/>
+  
+  <!-- Speed lines -->
+  <path d="M100 100 L120 110" stroke="#0EA5E9" stroke-width="3" stroke-linecap="round"/>
+  <path d="M300 100 L280 110" stroke="#0EA5E9" stroke-width="3" stroke-linecap="round"/>
+  <path d="M100 200 L120 190" stroke="#0EA5E9" stroke-width="3" stroke-linecap="round"/>
+  <path d="M300 200 L280 190" stroke="#0EA5E9" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- "15 MIN" text -->
+  <text x="200" y="260" text-anchor="middle" fill="#F59E0B" font-family="Arial, sans-serif" font-size="24" font-weight="bold">15 MIN</text>
+  <text x="200" y="280" text-anchor="middle" fill="#0EA5E9" font-family="Arial, sans-serif" font-size="14">GUARANTEE</text>
+</svg>
